@@ -1,4 +1,3 @@
-// server.js
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
@@ -21,13 +20,30 @@ app.use((req, res, next) => {
 
 // Basic route for testing
 app.get('/', (req, res) => {
-  res.send('CSS CDN Server is running!');
+  res.send('CSS and JS CDN Server is running!');
 });
 
-// Specific route for CSS files
+// Route for CSS files
 app.get('/css/:filename', (req, res) => {
   const { filename } = req.params;
   res.sendFile(path.join(__dirname, 'public', 'css', filename));
+});
+
+// Route for JS files
+app.get('/js/:filename', (req, res) => {
+  const { filename } = req.params;
+  // Set correct content type for JavaScript files
+  res.setHeader('Content-Type', 'application/javascript');
+  res.sendFile(path.join(__dirname, 'public', 'js', filename));
+});
+
+// Error handling for file not found
+app.use((err, req, res, next) => {
+  if (err.code === 'ENOENT') {
+    res.status(404).send('File not found');
+  } else {
+    next(err);
+  }
 });
 
 app.listen(port, () => {

@@ -1,0 +1,76 @@
+/* Navbar styles */
+.navbar {
+  background-color: #2563eb; /* Tailwind Blue-600 */
+  padding: 1rem 2rem;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+}
+
+.menu-button {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menu {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.menu a:hover {
+  color: #d1d5db; /* Tailwind Gray-300 */
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  background-color: #2563eb; /* Tailwind Blue-600 */
+  padding: 1rem;
+}
+
+.mobile-menu a {
+  display: block;
+  color: white;
+  padding: 0.5rem 0;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.mobile-menu a:hover {
+  background-color: #1d4ed8; /* Tailwind Blue-700 */
+}
+
+/* Media Query for mobile */
+@media (max-width: 1024px) {
+  .menu {
+    display: none;
+  }
+
+  .menu-button {
+    display: block;
+  }
+
+  .mobile-menu.hidden {
+    display: none;
+  }
+
+  .mobile-menu a {
+    padding: 1rem 0;
+  }
+}
